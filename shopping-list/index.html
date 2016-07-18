@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+	<title>Shopping List tool - Angular Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div ng-app="myFirstApp">
+	<div ng-controller="firstController" class="content">
+		<div class="form-group">
+			<h2>Your Shopping List</h2>
+			<input type="text" ng-model="new_item" placeholder="Add Item" ng-class='{danger: form_error}'>
+			<button ng-click="addItem()">Add Item</button>
+		</div>
+		<br><br>
+		<div style="background-color:#FFFBA2;padding:10px;">
+			<div style="text-align:center;background-color:none;">
+				<label>Search: <input ng-model="searchText"></label>
+			</div>
+			<hr>
+			<ol>
+				<li ng-repeat="item in todo_lists | filter:searchText track by $index "> 
+					<span class="item" ng-class="{striken : item_striken$index}"> {{ item | capitalize }} </span> &nbsp; 
+					<div class="right">
+						<i class="fa fa-check" ng-show="!item_striken$index" ng-click="item_striken$index = !item_striken$index"></i> 
+						<i class="fa fa-times" ng-show="item_striken$index" ng-click="item_striken$index = !item_striken$index"></i> &nbsp;
+						<i class="fa fa-trash" ng-click="deleteItem($index)"></i>
+					</div> 
+				</li>
+			</ol>
+		</div>	
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

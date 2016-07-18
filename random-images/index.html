@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+	<title>Random image view - Angular Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div ng-app="myFirstApp">
+	<div ng-controller="firstController" class="content">
+		<div class="form-group">
+			<div style="text-align:center;margin-top:10px;">
+				<h2>Random Images</h2>
+				<p> <button ng-show="!grey" ng-click="greyScale()">Add Grey Scale</button> &nbsp;  <button ng-show="grey" ng-click="greyScale()">Remove Grey Scale</button> &nbsp;&nbsp; <button ng-show="!blur" ng-click="blurScale()">Add Blur Effect</button> &nbsp;  <button ng-show="blur" ng-click="blurScale()">Remove Blur Effect</button> </p>
+				<img ng-src="https://unsplash.it{{ greyparam }}/400?image={{index}}{{ blur_effect }}" onerror="this.src='img/no_image.gif'" style="max-width:99%;border:3px solid #f44336;">
+				<p>
+					<a ng-click="index=index-1" ng-show="index>1" ><button class="button"><< Prev </button> </a> &nbsp;&nbsp;
+					<a ng-show="!sliderSwitch" ng-click="startAutoplay()" ><button class="button">Start Autoplay </button> </a> 
+					<a ng-show="sliderSwitch" ng-click="stopAutoplay()" ><button class="button"> Stop Autoplay </button> </a> &nbsp;&nbsp; 
+					<a ng-click="index=index+1" ng-show="index<1060"><button class="button">Next >></button></a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
