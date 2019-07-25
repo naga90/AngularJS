@@ -1,50 +1,80 @@
-<div class="pagination">
-    <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-4 prev-page">
-                <button mat-raised-button color="accent" [disabled]="this.page == 1" (click)="goPrevious()">
-                    <mat-icon>chevron_left</mat-icon>
-                    Previous
-                </button>
-            </div>
-            <div class="col-md-4 page-no">
-            Current Page : {{ page }}
-            </div>
-            <div class="col-md-4 next-page">
-                <button mat-raised-button color="accent" (click)="goNext()">
-                    <mat-icon>chevron_right</mat-icon>
-                    Next
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<h1 class="mat-display-1" color="accent">Browse Images From All Over The World</h1>
 
 <section *ngIf="showProgress">
     <mat-progress-spinner style="margin:0 auto;"  mode="indeterminate"></mat-progress-spinner>
 </section>
 
-<mat-grid-list cols="2" rowHeight="600px" *ngIf="!showProgress">
-    <ng-container *ngFor="let image of imageList; let last=last">
-        {{ last ? applyFancy() : '' }}
-        <mat-grid-tile>
-            <mat-card class="example-card">  
-                <mat-card-header>
-                    <mat-card-subtitle>Shot by</mat-card-subtitle>
-                    <mat-card-title>
-                        <a color="accent" [href]="image.url" target="_blank">{{ image.author }}</a></mat-card-title>                    
-                </mat-card-header>             
-                <mat-card-content>
-                    <a rel="gallery1" [href]="image.download_url" class="fancy">
-                        <img mat-card-image [src]="getImageDownloadUrl(image.id)" [alt]="image.author">
-                    </a>    
-                </mat-card-content>
-            </mat-card>
-        </mat-grid-tile>
-    </ng-container>
-</mat-grid-list>
+<section class="image-list" *ngIf="!showProgress">
+        <mat-grid-list cols="3" rowHeight="430px">
+            <ng-container *ngFor="let image of imageList; let last=last">
+                {{ last ? applyFancy() : '' }}
+                <mat-grid-tile>
+                    <mat-card class="example-card">  
+                        <mat-card-header>
+                            <mat-card-subtitle>Shot by</mat-card-subtitle>
+                            <mat-card-title>
+                                <a color="accent" [href]="image.url" target="_blank" class="author">{{ image.author }}</a>
+                            </mat-card-title> 
+                        </mat-card-header> 
+                        <div class="image-container">
+                            <a rel="gallery1" [href]="image.download_url" class="fancy">
+                                    <img mat-card-image [src]="getImageDownloadUrl(image.id)" [alt]="image.author">
+                                </a>     
+                        </div>                         
+                        <mat-card-actions>
+                            <a rel="gallery1" [href]="image.download_url" class="fancy">
+                                <button mat-button color="warn">
+                                    <mat-icon>zoom_out_map</mat-icon> View
+                                </button>
+                            </a>
+                        </mat-card-actions>
+                    </mat-card>
+                </mat-grid-tile>
+            </ng-container>
+        </mat-grid-list>
+        <div class="pagination">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-3 prev-page">
+                            <button mat-raised-button color="accent" [disabled]="this.page == 1" (click)="goPrevious()">
+                                <mat-icon>chevron_left</mat-icon>
+                                Previous
+                            </button>
+                        </div>
+                        <div class="col-md-6 page-no">
+                            <div class="row">
+                                <div class="col-md-6">
+                                   Current Page : {{ page }}
+                                </div>
+                                <div class="col-md-3" align="right">
+                                    Limit:
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <select class="form-control" [(ngModel)]="limit" (change)="changePage()">
+                                                <option value="12">12</option>
+                                                <option value="24">24</option>
+                                                <option value="48">48</option>
+                                                <option value="96">96</option>
+                                            </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 next-page">
+                            <button mat-raised-button color="accent" (click)="goNext()">
+                                <mat-icon>chevron_right</mat-icon>
+                                Next
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</section>
 
 
-<div class="pagination"></div>
+
+
+    
 
 

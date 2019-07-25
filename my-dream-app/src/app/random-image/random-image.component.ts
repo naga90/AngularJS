@@ -14,7 +14,8 @@ declare var $: any;
 export class RandomImageComponent implements OnInit {
 
     showProgress = true;
-	  page = 1;	
+    page = 1;	
+    limit = environment.imageLimit;
     imageList;
     randomImage;
   	constructor(randomImage : RandomImageService, private meta: Meta, private title: Title) {
@@ -27,7 +28,7 @@ export class RandomImageComponent implements OnInit {
     }
     
     getImageDownloadUrl(id){
-      return environment.imageDownloadUrl+id+"/500/400";
+      return environment.imageDownloadUrl+id+"/300/240";
     }
 
     goPrevious(){
@@ -35,7 +36,7 @@ export class RandomImageComponent implements OnInit {
       if(this.page <= 0){
         this.page = 1;
       }
-      this.changePage();
+      this.changePage();  
     }
 
     goNext(){
@@ -45,10 +46,11 @@ export class RandomImageComponent implements OnInit {
 
     changePage(){
       this.showProgress = true;
-      this.randomImage.getImages(this.page).subscribe( (resp) => { 
+      this.randomImage.getImages(this.page,this.limit).subscribe( (resp) => { 
           this.imageList = resp;
           this.showProgress = false;        
       });
+      this.scrollToTop();
     }
 
     applyFancy(){
@@ -63,6 +65,12 @@ export class RandomImageComponent implements OnInit {
           title	: { type : 'inside' },
           buttons	: {}
         }
-     });
+      });
+    }
+
+    scrollToTop(){
+      $('html, body').animate({
+          scrollTop: $("app-header").offset().top
+      }, 1);
     }
 }

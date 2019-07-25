@@ -7,7 +7,7 @@ export const environment = {
   baseUrl: 'https://reqres.in/api/',
   imageUrl: 'https://picsum.photos/v2/list',
   imageDownloadUrl:'https://picsum.photos/id/',
-  imageLimit : 10
+  imageLimit : 12
 };
 
 /*

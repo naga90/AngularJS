@@ -12,11 +12,10 @@ export class RandomImageService {
 
   	}
 
-  	getImages(page){
+  	getImages(page,limit){
   		var imageUrl = environment.imageUrl;
-  		var imageLimit = environment.imageLimit;
 
-  		var url = imageUrl+'?page='+page+'&limit='+imageLimit;
+  		var url = imageUrl+'?page='+page+'&limit='+limit;
   		return this.http.get(url);
   	}
 }
