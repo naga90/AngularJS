@@ -27,8 +27,12 @@ export class RandomImageComponent implements OnInit {
         this.title.setTitle("Random Images from PicSum - Dream Project");
     }
     
-    getImageDownloadUrl(id){
+    getImageThumbUrl(id){
       return environment.imageDownloadUrl+id+"/300/240";
+    }
+
+    getImageLargeUrl(id){
+      return environment.imageDownloadUrl+id+"/700/700";
     }
 
     goPrevious(){

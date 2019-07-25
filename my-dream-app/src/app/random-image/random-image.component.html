@@ -16,18 +16,16 @@
                                 <a color="accent" [href]="image.url" target="_blank" class="author">{{ image.author }}</a>
                             </mat-card-title> 
                         </mat-card-header> 
-                        <div class="image-container">
-                            <a rel="gallery1" [href]="image.download_url" class="fancy">
-                                    <img mat-card-image [src]="getImageDownloadUrl(image.id)" [alt]="image.author">
-                                </a>     
-                        </div>                         
-                        <mat-card-actions>
-                            <a rel="gallery1" [href]="image.download_url" class="fancy">
+                        <a rel="gallery1" [href]="getImageLargeUrl(image.id)" class="fancy">
+                            <div class="image-container">
+                                <img mat-card-image [src]="getImageThumbUrl(image.id)" [alt]="image.author">   
+                            </div>                         
+                            <mat-card-actions>
                                 <button mat-button color="warn">
                                     <mat-icon>zoom_out_map</mat-icon> View
                                 </button>
-                            </a>
-                        </mat-card-actions>
+                            </mat-card-actions>
+                        </a>
                     </mat-card>
                 </mat-grid-tile>
             </ng-container>
