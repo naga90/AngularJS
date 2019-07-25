@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RandomImageService } from '.././random-image.service';
+import { environment } from './../../environments/environment';
 
 import {Meta, Title} from '@angular/platform-browser';
 
@@ -23,10 +24,17 @@ export class RandomImageComponent implements OnInit {
 	  ngOnInit() {
 		    this.changePage();
         this.title.setTitle("Random Images from PicSum - Dream Project");
-	  }
+    }
+    
+    getImageDownloadUrl(id){
+      return environment.imageDownloadUrl+id+"/500/400";
+    }
 
     goPrevious(){
       this.page = this.page-1;
+      if(this.page <= 0){
+        this.page = 1;
+      }
       this.changePage();
     }
 

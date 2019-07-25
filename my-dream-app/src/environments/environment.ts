@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   baseUrl: 'https://reqres.in/api/',
   imageUrl: 'https://picsum.photos/v2/list',
+  imageDownloadUrl:'https://picsum.photos/id/',
   imageLimit : 10
 };
 

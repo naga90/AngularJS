@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   				]);
   		this.title.setTitle("Home - Dream Project");
 
-      this.changeTitle(this.title);
+      //this.changeTitle(this.title);
   	}
 
     changeTitle(title){

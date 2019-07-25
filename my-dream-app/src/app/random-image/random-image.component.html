@@ -2,7 +2,7 @@
     <div class="col-md-12">
         <div class="row">
             <div class="col-md-4 prev-page">
-                <button mat-raised-button color="accent" *ngIf="this.page != 1" (click)="goPrevious()">
+                <button mat-raised-button color="accent" [disabled]="this.page == 1" (click)="goPrevious()">
                     <mat-icon>chevron_left</mat-icon>
                     Previous
                 </button>
@@ -24,14 +24,19 @@
     <mat-progress-spinner style="margin:0 auto;"  mode="indeterminate"></mat-progress-spinner>
 </section>
 
-<mat-grid-list cols="2" rowHeight="300px" *ngIf="!showProgress">
+<mat-grid-list cols="2" rowHeight="600px" *ngIf="!showProgress">
     <ng-container *ngFor="let image of imageList; let last=last">
         {{ last ? applyFancy() : '' }}
         <mat-grid-tile>
-            <mat-card class="example-card">               
+            <mat-card class="example-card">  
+                <mat-card-header>
+                    <mat-card-subtitle>Shot by</mat-card-subtitle>
+                    <mat-card-title>
+                        <a color="accent" [href]="image.url" target="_blank">{{ image.author }}</a></mat-card-title>                    
+                </mat-card-header>             
                 <mat-card-content>
-                    <a rel="gallery1" [href]="image.download_url" class="fancy" target="_blank">
-                        <img mat-card-image [src]="image.download_url" [alt]="image.author">
+                    <a rel="gallery1" [href]="image.download_url" class="fancy">
+                        <img mat-card-image [src]="getImageDownloadUrl(image.id)" [alt]="image.author">
                     </a>    
                 </mat-card-content>
             </mat-card>
