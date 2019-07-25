@@ -25,11 +25,12 @@
 </section>
 
 <mat-grid-list cols="2" rowHeight="300px" *ngIf="!showProgress">
-    <ng-container *ngFor="let image of imageList ">
+    <ng-container *ngFor="let image of imageList; let last=last">
+        {{ last ? applyFancy() : '' }}
         <mat-grid-tile>
             <mat-card class="example-card">               
                 <mat-card-content>
-                    <a [href]="image.download_url" class="fancy">
+                    <a rel="gallery1" [href]="image.download_url" class="fancy" target="_blank">
                         <img mat-card-image [src]="image.download_url" [alt]="image.author">
                     </a>    
                 </mat-card-content>

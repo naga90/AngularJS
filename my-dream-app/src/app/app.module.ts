@@ -14,10 +14,9 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
-
-import { UserService } from './user.service';
 import { RandomImageComponent } from './random-image/random-image.component';
 
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [

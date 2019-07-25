@@ -39,14 +39,22 @@ export class RandomImageComponent implements OnInit {
       this.showProgress = true;
       this.randomImage.getImages(this.page).subscribe( (resp) => { 
           this.imageList = resp;
-          this.showProgress = false;
-
-          setTimeout(function(){
-            console.log("3 seconds after ajax");
-            $('.fancy').fancybox();
-            console.log("after fancy");
-          },3000);
-          
+          this.showProgress = false;        
       });
+    }
+
+    applyFancy(){
+      $(".fancy").fancybox({
+        openEffect  : "fade",
+        closeEffect : "fade",
+        type : "image",
+        prevEffect		: 'none',
+        nextEffect		: 'none',
+        loop : false,
+        helpers		: {
+          title	: { type : 'inside' },
+          buttons	: {}
+        }
+     });
     }
 }
