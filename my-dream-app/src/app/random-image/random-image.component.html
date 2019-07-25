@@ -1,0 +1,44 @@
+<div class="pagination">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-4 prev-page">
+                <button mat-raised-button color="accent" *ngIf="this.page != 1" (click)="goPrevious()">
+                    <mat-icon>chevron_left</mat-icon>
+                    Previous
+                </button>
+            </div>
+            <div class="col-md-4 page-no">
+            Current Page : {{ page }}
+            </div>
+            <div class="col-md-4 next-page">
+                <button mat-raised-button color="accent" (click)="goNext()">
+                    <mat-icon>chevron_right</mat-icon>
+                    Next
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section *ngIf="showProgress">
+    <mat-progress-spinner style="margin:0 auto;"  mode="indeterminate"></mat-progress-spinner>
+</section>
+
+<mat-grid-list cols="2" rowHeight="300px" *ngIf="!showProgress">
+    <ng-container *ngFor="let image of imageList ">
+        <mat-grid-tile>
+            <mat-card class="example-card">               
+                <mat-card-content>
+                    <a [href]="image.download_url" class="fancy">
+                        <img mat-card-image [src]="image.download_url" [alt]="image.author">
+                    </a>    
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </ng-container>
+</mat-grid-list>
+
+
+<div class="pagination"></div>
+
+

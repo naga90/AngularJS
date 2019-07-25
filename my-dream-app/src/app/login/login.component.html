@@ -1,9 +1,9 @@
 <div class="col-sm-12 col-md-6">
 	<div class="border-box">
-		<form #userlogin="ngForm" (ngSubmit)="loginMethod(userlogin.value)">
+		<form #userlogin="ngForm" (ngSubmit)="registerUser(userlogin.value)">
 			<div class="form-label-group">
-				<label for="uname"><b>Username</b></label>
-				<input type="text" placeholder="Enter Username" name="uname" required ngModel autocomplete="off">
+				<label for="email"><b>Username</b></label>
+				<input type="text" placeholder="Enter Email" name="email" required ngModel autocomplete="off">
 			</div>
 
 			<div class="form-label-group">
@@ -15,13 +15,13 @@
 				<button type="submit">Login</button>
 			</div>	
 
-			<div class="sample">
+			<!-- <div class="sample">
 				<p>Sample login data :</p>
 				<ul>
 					<li>naga - naga@123</li>
 					<li>rajan - rajan@123</li>
 				</ul>	
-			</div>
+			</div> -->
 		</form>	
 	</div>	
 </div>

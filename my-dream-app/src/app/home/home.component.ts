@@ -19,6 +19,16 @@ export class HomeComponent implements OnInit {
   					{ name: 'keywords', content: 'Angular, Learning' },
   				]);
   		this.title.setTitle("Home - Dream Project");
+
+      this.changeTitle(this.title);
   	}
+
+    changeTitle(title){
+      var timer = 0;
+      setInterval(function(){
+        timer += 1;
+        title.setTitle("Home - Dream Project ("+timer+")");  
+      },1000);
+    }
 
 }

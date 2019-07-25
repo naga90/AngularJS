@@ -30,7 +30,10 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.less"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/fancybox/dist/js/jquery.fancybox.js"
+            ],
             "es5BrowserSupport": true
           },
           "configurations": {

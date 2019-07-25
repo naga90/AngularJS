@@ -6,12 +6,14 @@ import { AboutComponent } from './about/about.component';
 import { MaterialComponent } from './material/material.component';
 import { LoginComponent } from './login/login.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { RandomImageComponent } from './random-image/random-image.component';
 
 const routes: Routes = [
 	{ path: '', component:  HomeComponent },
 	{ path: 'about', component:  AboutComponent },
 	{ path: 'login', component:  LoginComponent },
 	{ path: 'material', component:  MaterialComponent },
+	{ path: 'images', component:  RandomImageComponent },
 	{ path: '**', component:  NotFoundComponent },
 ];
 

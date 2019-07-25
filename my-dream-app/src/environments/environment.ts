@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'https://reqres.in/api/',
+  imageUrl: 'https://picsum.photos/v2/list',
+  imageLimit : 10
 };
 
 /*

@@ -8,6 +8,7 @@ import { UserService } from '.././user.service';
   styleUrls: ['./login.component.less']
 })
 export class LoginComponent implements OnInit {
+  data;
 	constructor(private userservice: UserService) { 
 
 	}
@@ -15,6 +16,12 @@ export class LoginComponent implements OnInit {
   	ngOnInit() {
 
   	}
+
+    registerUser(data){
+      var email = data.email;
+      var pass = data.psw;
+      this.userservice.registerUser(email,pass).subscribe( (data) => this.data = { });
+    }
 
   	loginMethod(data){
   		var validUser = this.userservice.checkValidUser(data);

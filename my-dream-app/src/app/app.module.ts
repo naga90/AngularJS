@@ -4,6 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponent } from './material/material.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { UiModule } from './ui/ui.module';
 import {MaterialModule} from './material/material.module';
@@ -15,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
 
 import { UserService } from './user.service';
+import { RandomImageComponent } from './random-image/random-image.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { UserService } from './user.service';
     HomeComponent,
     NotFoundComponent,
     LoginComponent,
-    MaterialComponent
+    MaterialComponent,
+    RandomImageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,8 @@ import { UserService } from './user.service';
     UiModule,
     FormsModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from './../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +8,15 @@ import { Injectable } from '@angular/core';
 
 export class UserService {
 
-	constructor() { }
+	configUrl = environment.baseUrl;
+
+	constructor(private http: HttpClient) { 
+
+	}
+
+	registerUser(email,pass) {
+	  return this.http.post(this.configUrl+'register',{email:email,password:pass});
+	}
 
 	checkValidUser(formData){
 		if(formData.uname == "naga" && formData.psw == "naga@123"){
