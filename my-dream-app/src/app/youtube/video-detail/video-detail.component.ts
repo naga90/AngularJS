@@ -25,4 +25,12 @@ export class VideoDetailComponent implements OnInit {
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 
+  getTitle(){
+    return this.selected_video.snippet.title;
+  }
+
+  getDesc(){
+    return this.selected_video.snippet.description;
+  }
+
 }

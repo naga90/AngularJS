@@ -1,10 +1,10 @@
 <ul class="list-group list-group-flush" *ngIf="videos">
   <li class="list-group-item" *ngFor="let video of videos" (click)="selectVideo(video)">
     <div class="row">
-        <div class="col-md-4">
-          <img [src]="getThumbImage(video)" />
+        <div class="col-md-5">
+          <img [src]="getThumbImage(video)" class="thumb_image"/>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
           <span>{{ getTitle(video) }}</span>
         </div>
     </div>

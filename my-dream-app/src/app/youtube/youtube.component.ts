@@ -19,7 +19,8 @@ export class YoutubeComponent implements OnInit {
     }
 
     ngOnInit() {
-      
+      this.search_keyword = "green forest";
+      this.searchVideo();
     }
 
     searchVideo(){
