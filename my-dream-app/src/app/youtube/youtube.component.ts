@@ -19,7 +19,7 @@ export class YoutubeComponent implements OnInit {
     }
 
     ngOnInit() {
-      this.search_keyword = "green forest";
+      this.search_keyword = "Animated short films";
       this.searchVideo();
     }
 

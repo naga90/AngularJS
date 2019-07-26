@@ -5,7 +5,7 @@
           <img [src]="getThumbImage(video)" class="thumb_image"/>
         </div>
         <div class="col-md-7">
-          <span>{{ getTitle(video) }}</span>
+          <span [innerHTML]="getTitle(video)"></span>
         </div>
     </div>
   </li>
