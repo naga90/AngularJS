@@ -1,0 +1,23 @@
+<div class="videos-page">
+  <h3>Videos</h3>
+  <div class="row">
+    <div class="col-md-8">
+          <div class="input-group mb-3">
+            <input [(ngModel)]="search_keyword" type="text" class="form-control" placeholder="Search Videos" required>
+            <div class="input-group-append">
+              <button mat-raised-button color="accent" type="button" (click)="searchVideo()" [disabled]="search_keyword == ''">Search</button>
+            </div>
+          </div>
+      </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-8">
+        <app-video-detail [selected_video]="selected_video"></app-video-detail>
+    </div>
+    <div class="col-md-4">
+        <app-video-list [videos]="videos" (selected_video)="selectVideo($event)"></app-video-list>
+    </div>
+  </div>
+</div>
+

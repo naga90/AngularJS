@@ -17,6 +17,10 @@ import { LoginComponent } from './login/login.component';
 import { RandomImageComponent } from './random-image/random-image.component';
 
 import { UserService } from './user.service';
+import { YoutubeComponent } from './youtube/youtube.component';
+import { VideoListComponent } from './youtube/video-list/video-list.component';
+import { VideoDetailComponent } from './youtube/video-detail/video-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +30,10 @@ import { UserService } from './user.service';
     NotFoundComponent,
     LoginComponent,
     MaterialComponent,
-    RandomImageComponent
+    RandomImageComponent,
+    YoutubeComponent,
+    VideoListComponent,
+    VideoDetailComponent
   ],
   imports: [
     BrowserModule,

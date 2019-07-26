@@ -7,7 +7,9 @@ export const environment = {
   baseUrl: 'https://reqres.in/api/',
   imageUrl: 'https://picsum.photos/v2/list',
   imageDownloadUrl:'https://picsum.photos/id/',
-  imageLimit : 12
+  imageLimit : 12,
+  youTubeAPIURL:'https://www.googleapis.com/youtube/v3/',
+  youTubeAPI : 'AIzaSyBusZgBdEJ9_iFwcwUueOrlGeDfAqnvHWE',
 };
 
 /*
