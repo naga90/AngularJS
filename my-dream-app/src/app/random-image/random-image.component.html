@@ -16,7 +16,7 @@
                                 <a color="accent" [href]="image.url" target="_blank" class="author">{{ image.author }}</a>
                             </mat-card-title> 
                         </mat-card-header> 
-                        <a rel="gallery1" [href]="getImageLargeUrl(image.id)" class="fancy">
+                        <a rel="gallery1" appFancyBox [href]="getImageLargeUrl(image.id)">
                             <div class="image-container">
                                 <img mat-card-image [src]="getImageThumbUrl(image.id)" [alt]="image.author">   
                             </div>                         

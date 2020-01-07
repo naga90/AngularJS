@@ -20,6 +20,8 @@ import { UserService } from './user.service';
 import { YoutubeComponent } from './youtube/youtube.component';
 import { VideoListComponent } from './youtube/video-list/video-list.component';
 import { VideoDetailComponent } from './youtube/video-detail/video-detail.component';
+import { FancyComponent } from './fancy/fancy.component';
+import { FancyboxDirective } from './fancybox.directive';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { VideoDetailComponent } from './youtube/video-detail/video-detail.compon
     RandomImageComponent,
     YoutubeComponent,
     VideoListComponent,
-    VideoDetailComponent
+    VideoDetailComponent,
+    FancyComponent,
+    FancyboxDirective
   ],
   imports: [
     BrowserModule,

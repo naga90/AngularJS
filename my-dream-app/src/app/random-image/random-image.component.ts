@@ -58,7 +58,7 @@ export class RandomImageComponent implements OnInit {
     }
 
     applyFancy(){
-      $(".fancy").fancybox({
+      /*$(".fancy").fancybox({
         openEffect  : "fade",
         closeEffect : "fade",
         type : "image",
@@ -69,7 +69,7 @@ export class RandomImageComponent implements OnInit {
           title	: { type : 'inside' },
           buttons	: {}
         }
-      });
+      });*/
     }
 
     scrollToTop(){
