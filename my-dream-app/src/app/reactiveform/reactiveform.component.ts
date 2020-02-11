@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 @Component({
     selector: 'app-reactiveform',
@@ -9,13 +10,13 @@ import { FormBuilder } from '@angular/forms';
 export class ReactiveformComponent implements OnInit {
 
     userForm = this.fb.group({
-        fname: [],
-        lname: [],
-        age: [],
+        fname: ['Nagarajan', Validators.required],
+        lname: ['Ragothaman'],
+        age: [29],
         address: this.fb.group({
-            street: [],
-            city: [],
-            pincode: []
+            street: ['Kodambakkam'],
+            city: ['Chennai'],
+            pincode: ['600024']
 
         })
     });
@@ -23,6 +24,7 @@ export class ReactiveformComponent implements OnInit {
     constructor(private fb: FormBuilder) { }
 
     ngOnInit() {
+
     }
 
 }
