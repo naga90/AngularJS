@@ -1,0 +1,40 @@
+<form [formGroup]="userForm">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" formControlName="fname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" formControlName="lname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" formControlName="age" class="form-control" />
+                </div>
+            </div>
+            <div class="col">
+                <div formGroupName="address">
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input type="text" formControlName="street" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" formControlName="city" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Pincode</label>
+                        <input type="text" formControlName="pincode" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
