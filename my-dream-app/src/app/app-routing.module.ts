@@ -11,6 +11,7 @@ import { YoutubeComponent } from './youtube/youtube.component';
 import { FormsComponent } from './forms/forms.component';
 import { TemplateformComponent } from './templateform/templateform.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { FormbuilderComponent } from './formbuilder/formbuilder.component';
 
 const routes: Routes = [
 	{ path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
 	{ path: 'material-form', component: FormsComponent },
 	{ path: 'template-form', component: TemplateformComponent },
 	{ path: 'reactive-form', component: ReactiveformComponent },
+	{ path: 'form-builder', component: FormbuilderComponent },
 	{ path: '**', component: NotFoundComponent },
 ];
 

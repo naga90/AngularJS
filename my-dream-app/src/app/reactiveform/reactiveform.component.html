@@ -1,40 +1,131 @@
-<form [formGroup]="userForm">
+<form [formGroup]="userForm" autocomplete="off" (ngSubmit)="userForm.valid && handleSubmit()">
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label>Firstname</label>
-                    <input type="text" formControlName="fname" class="form-control" />
+                    <input type="text" formControlName="fname" class="form-control"
+                        [ngClass]="{'is-valid':userForm.get('fname').valid, 'is-invalid':userForm.get('fname').invalid}" />
+                    <span class="invalid-feedback" *ngIf="userForm.get('fname').errors?.required">First name is
+                        required</span>
                 </div>
                 <div class="form-group">
                     <label>Lastname</label>
-                    <input type="text" formControlName="lname" class="form-control" />
+                    <input type="text" formControlName="lname" class="form-control"
+                        [ngClass]="{'is-valid':userForm.get('lname').valid, 'is-invalid':userForm.get('lname').invalid}" />
+                    <span class="invalid-feedback" *ngIf="userForm.get('lname').errors?.required">Last name is
+                        required</span>
                 </div>
                 <div class="form-group">
                     <label>Age</label>
-                    <input type="text" formControlName="age" class="form-control" />
+                    <input type="text" formControlName="age"
+                        [ngClass]="{'is-valid':userForm.get('age').valid, 'is-invalid':userForm.get('age').invalid}"
+                        class="form-control" />
+                    <span *ngIf="userForm.get('age').errors?.required" class="invalid-feedback">Age is required</span>
+                    <span *ngIf="userForm.get('age').errors?.maxlength" class="invalid-feedback">Age must be within 3
+                        digits</span>
+                    <span *ngIf="userForm.get('age').errors?.isNumber" class="invalid-feedback">Invalid age</span>
+                </div>
+                <div class="form-group">
+                    <label>Hobbies</label>
+                    <button class="btn btn-warning btn-sm pull-right" (click)="addHobby()">Add Hobby</button>
+                </div>
+                <div formArrayName="hobbies">
+                    <div class="mb-3" *ngFor="let hobby of userForm.get('hobbies').controls; let i=index">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Add Hobby" aria-label=""
+                                aria-describedby="basic-addon1" [formControlName]="i"
+                                [ngClass]="{'is-valid':userForm.get('hobbies').controls[i].valid, 'is-invalid':userForm.get('hobbies').controls[i].invalid && userForm.get('hobbies').controls[i].touched}" />
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button" (click)="removeHobby(i)"
+                                    [disabled]="(userForm.get('hobbies').controls).length == 1">Remove</button>
+                            </div>
+                        </div>
+                        <span class="invalid-feedback d-block"
+                            *ngIf="userForm.get('hobbies').controls[i].invalid && userForm.get('hobbies').controls[i].touched">Hobby
+                            is required</span>
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <div formGroupName="address">
                     <div class="form-group">
                         <label>Street</label>
-                        <input type="text" formControlName="street" class="form-control" />
+                        <input type="text" formControlName="street" class="form-control"
+                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.street.invalid}" />
+                        <span *ngIf="userForm.get('address').controls.street.errors?.required"
+                            class="invalid-feedback">Street is
+                            required</span>
                     </div>
                     <div class="form-group">
                         <label>City</label>
-                        <input type="text" formControlName="city" class="form-control" />
+                        <input type="text" formControlName="city" class="form-control"
+                            [ngClass]="{'is-valid':userForm.get('address').controls.city.valid,'is-invalid':userForm.get('address').controls.city.invalid}" />
+                        <span *ngIf="userForm.get('address').controls.city.errors?.required"
+                            class="invalid-feedback">City
+                            is
+                            required</span>
                     </div>
                     <div class="form-group">
                         <label>Pincode</label>
-                        <input type="text" formControlName="pincode" class="form-control" />
+                        <input type="text" formControlName="pincode" class="form-control"
+                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.pincode.invalid}" />
+                        <span *ngIf="userForm.get('address').controls.pincode.errors?.required"
+                            class="invalid-feedback">Pincode is
+                            required</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Family Members</label>
+                    <button class="btn btn-warning btn-sm pull-right" (click)="addMember()">Add Member</button>
+                </div>
+                <div formArrayName="familymembers">
+                    <div class="mb-3" *ngFor="let member of userForm.get('familymembers').controls; let i=index">
+                        <div class="row" [formGroupName]="i">
+                            <div class="col">
+                                <input type="text" formControlName="mem_name" class="form-control" placeholder="Name"
+                                    [ngClass]="{'is-valid':userForm.get('familymembers').controls[i].controls.mem_name.valid,'is-invalid':userForm.get('familymembers').controls[i].controls.mem_name.invalid && userForm.get('familymembers').controls[i].controls.mem_name.touched}" />
+                                <span class="invalid-feedback"
+                                    *ngIf="userForm.get('familymembers').controls[i].controls.mem_name.invalid && userForm.get('familymembers').controls[i].controls.mem_name.touched">Name
+                                    is required</span>
+                            </div>
+                            <div class="col">
+                                <input type="text" formControlName="age" class="form-control" placeholder="Age"
+                                    [ngClass]="{'is-valid':userForm.get('familymembers').controls[i].controls.age.valid,'is-invalid':userForm.get('familymembers').controls[i].controls.age.invalid && userForm.get('familymembers').controls[i].controls.age.touched}" />
+                                <span class="invalid-feedback"
+                                    *ngIf="userForm.get('familymembers').controls[i].controls.age.invalid && userForm.get('familymembers').controls[i].controls.age.touched">Age
+                                    is required</span>
+                            </div>
+                            <div class="col mt-1">
+                                <button type="button" class="btn btn-link"
+                                    [disabled]="(userForm.get('familymembers').controls).length == 1"
+                                    (click)="removeMember(i)">Remove</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col">
-                <button class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" data-toggle="modal" data-target="#user_modal"
+                    [disabled]="userForm.invalid">Submit</button> &nbsp;&nbsp; {{ userForm.status }}
+            </div>
+            <div class="col">
             </div>
         </div>
     </div>
 </form>
+
+<div class="modal bottom popup-slide fade" id="user_modal" tabindex='-1' role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span></button>
+                <h5>Form Success</h5>
+                <hr>
+                <pre>{{userForm.value | json}}</pre>
+            </div>
+        </div>
+    </div>
+</div>

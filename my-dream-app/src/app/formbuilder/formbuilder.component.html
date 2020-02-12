@@ -1,0 +1,72 @@
+<form [formGroup]="userForm">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Firstname</label>
+                    <input type="text" formControlName="fname" class="form-control" />
+                    <span *ngIf="userForm.get('fname').errors?.required">First name is required</span>
+                </div>
+                <div class="form-group">
+                    <label>Lastname</label>
+                    <input type="text" formControlName="lname" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Age</label>
+                    <input type="text" formControlName="age"
+                        [ngClass]="{'is-valid':userForm.get('age').valid, 'is-invalid':userForm.get('age').invalid}"
+                        class="form-control" />
+                    <span *ngIf="userForm.get('age').errors?.required" class="invalid-feedback">Age is required</span>
+                    <span *ngIf="userForm.get('age').errors?.maxlength" class="invalid-feedback">Age must be within 3
+                        digits</span>
+                    <span *ngIf="userForm.get('age').errors?.isNumber" class="invalid-feedback">Invalid age</span>
+                </div>
+            </div>
+            <div class="col">
+                <div formGroupName="address">
+                    <div class="form-group">
+                        <label>Street</label>
+                        <input type="text" formControlName="street" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>City</label>
+                        <input type="text" formControlName="city" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Pincode</label>
+                        <input type="text" formControlName="pincode" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Hobbies</label>
+                    <button class="btn btn-warning btn-sm pull-right" (click)="addHobby()">Add Hobby</button>
+                </div>
+                <div formArrayName="hobbies">
+                    <div class="mb-3" *ngFor="let hobby of userForm.get('hobbies').controls; let i=index">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Add Hobby" aria-label=""
+                                aria-describedby="basic-addon1" [formControlName]="i"
+                                [ngClass]="{'is-valid':userForm.get('hobbies').controls[i].valid && userForm.get('hobbies').controls[i].touched, 'is-invalid':userForm.get('hobbies').controls[i].invalid && userForm.get('hobbies').controls[i].touched}" />
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-secondary" type="button" (click)="removeHobby(i)"
+                                    [disabled]="(userForm.get('hobbies').controls).length == 1">Remove</button>
+                            </div>
+                        </div>
+                        <span class="invalid-feedback d-block"
+                            *ngIf="userForm.get('hobbies').controls[i].invalid && userForm.get('hobbies').controls[i].touched">Hobby
+                            is required</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col">
+                <pre>{{userForm.value | json}}</pre>
+
+                <pre>{{ userForm.status }}</pre>
+            </div>
+        </div>
+    </div>
+</form>

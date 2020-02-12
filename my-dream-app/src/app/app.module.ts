@@ -26,6 +26,7 @@ import { FancyboxDirective } from './fancybox.directive';
 import { FormsComponent } from './forms/forms.component';
 import { TemplateformComponent } from './templateform/templateform.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { FormbuilderComponent } from './formbuilder/formbuilder.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ReactiveformComponent } from './reactiveform/reactiveform.component';
     FancyboxDirective,
     FormsComponent,
     TemplateformComponent,
-    ReactiveformComponent
+    ReactiveformComponent,
+    FormbuilderComponent
   ],
   imports: [
     BrowserModule,
