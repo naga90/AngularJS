@@ -78,7 +78,13 @@
 
                 <div class="form-group">
                     <label>Family Members</label>
-                    <button class="btn btn-warning btn-sm pull-right" (click)="addMember()">Add Member</button>
+                    <select class="form-control" #total (change)="createMembers(total.value)">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
                 <div formArrayName="familymembers">
                     <div class="mb-3" *ngFor="let member of userForm.get('familymembers').controls; let i=index">
@@ -97,11 +103,11 @@
                                     *ngIf="userForm.get('familymembers').controls[i].controls.age.invalid && userForm.get('familymembers').controls[i].controls.age.touched">Age
                                     is required</span>
                             </div>
-                            <div class="col mt-1">
+                            <!-- <div class="col mt-1">
                                 <button type="button" class="btn btn-link"
                                     [disabled]="(userForm.get('familymembers').controls).length == 1"
                                     (click)="removeMember(i)">Remove</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

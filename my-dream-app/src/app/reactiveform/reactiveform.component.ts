@@ -49,13 +49,20 @@ export class ReactiveformComponent implements OnInit {
         (this.userForm.get("hobbies") as FormArray).removeAt(index);
     }
 
-    addMember() {
-        (this.userForm.get("familymembers") as FormArray).push(
-            new FormGroup({
-                mem_name: new FormControl('', Validators.required),
-                age: new FormControl('', Validators.required)
-            })
-        );
+    createMembers(value) {
+        var family = (this.userForm.get("familymembers") as FormArray);
+        while (family.length) {
+            family.removeAt(0);
+        }
+
+        for (let i = 1; i <= value; i++) {
+            (this.userForm.get("familymembers") as FormArray).push(
+                new FormGroup({
+                    mem_name: new FormControl('', Validators.required),
+                    age: new FormControl('', Validators.required)
+                })
+            );
+        }
     }
 
     removeMember(index) {
