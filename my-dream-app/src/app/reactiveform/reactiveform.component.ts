@@ -5,6 +5,9 @@ import { Validators } from '@angular/forms';
 //import { nameValidator } from '../validators/name.validators';
 import { numberValidator } from '../validators/number.validators';
 
+import { UserService } from '../services/user.service';
+import { User } from '../models/user.interface';
+
 declare var $: any;
 
 @Component({
@@ -35,7 +38,9 @@ export class ReactiveformComponent implements OnInit {
     });
 
 
-    constructor() { }
+    constructor(private userservice: UserService) {
+
+    }
 
     ngOnInit() {
 
@@ -67,5 +72,10 @@ export class ReactiveformComponent implements OnInit {
 
     removeMember(index) {
         (this.userForm.get("familymembers") as FormArray).removeAt(index);
+    }
+
+    handleFormSubmit(data: User) {
+        console.log(data);
+        this.userservice.createUser(data).subscribe();
     }
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" autocomplete="off" (ngSubmit)="userForm.valid && handleSubmit()">
+<form [formGroup]="userForm" autocomplete="off" (ngSubmit)="userForm.valid && handleFormSubmit(userForm.value)">
     <div class="container">
         <div class="row">
             <div class="col">
@@ -107,15 +107,15 @@
                                 <button type="button" class="btn btn-link"
                                     [disabled]="(userForm.get('familymembers').controls).length == 1"
                                     (click)="removeMember(i)">Remove</button>
-                            </div> -->
+                            </div> data-toggle="modal" data-target="#user_modal" -->
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#user_modal"
-                    [disabled]="userForm.invalid">Submit</button> &nbsp;&nbsp; {{ userForm.status }}
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button> &nbsp;&nbsp;
+                {{ userForm.status }}
             </div>
             <div class="col">
             </div>
