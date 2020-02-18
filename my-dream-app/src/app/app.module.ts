@@ -27,6 +27,7 @@ import { FormsComponent } from './forms/forms.component';
 import { TemplateformComponent } from './templateform/templateform.component';
 import { ReactiveformComponent } from './reactiveform/reactiveform.component';
 import { FormbuilderComponent } from './formbuilder/formbuilder.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { FormbuilderComponent } from './formbuilder/formbuilder.component';
     FormsComponent,
     TemplateformComponent,
     ReactiveformComponent,
-    FormbuilderComponent
+    FormbuilderComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

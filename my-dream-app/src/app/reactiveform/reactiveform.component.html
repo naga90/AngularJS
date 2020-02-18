@@ -1,30 +1,39 @@
+<div class="page-header mb-3">
+    <h3>{{ pageTitle }}</h3>
+</div>
 <form [formGroup]="userForm" autocomplete="off" (ngSubmit)="userForm.valid && handleFormSubmit(userForm.value)">
     <div class="container">
         <div class="row">
             <div class="col">
+                <input type="hidden" formControlName="user_id" />
                 <div class="form-group">
                     <label>Firstname</label>
                     <input type="text" formControlName="fname" class="form-control"
-                        [ngClass]="{'is-valid':userForm.get('fname').valid, 'is-invalid':userForm.get('fname').invalid}" />
-                    <span class="invalid-feedback" *ngIf="userForm.get('fname').errors?.required">First name is
+                        [ngClass]="{'is-valid':userForm.get('fname').valid, 'is-invalid':userForm.get('fname').invalid && userForm.get('fname').touched}" />
+                    <span class="invalid-feedback"
+                        *ngIf="userForm.get('fname').errors?.required && userForm.get('fname').touched">First name is
                         required</span>
                 </div>
                 <div class="form-group">
                     <label>Lastname</label>
                     <input type="text" formControlName="lname" class="form-control"
-                        [ngClass]="{'is-valid':userForm.get('lname').valid, 'is-invalid':userForm.get('lname').invalid}" />
-                    <span class="invalid-feedback" *ngIf="userForm.get('lname').errors?.required">Last name is
+                        [ngClass]="{'is-valid':userForm.get('lname').valid, 'is-invalid':userForm.get('lname').invalid && userForm.get('lname').touched}" />
+                    <span class="invalid-feedback"
+                        *ngIf="userForm.get('lname').errors?.required && userForm.get('lname').touched">Last name is
                         required</span>
                 </div>
                 <div class="form-group">
                     <label>Age</label>
                     <input type="text" formControlName="age"
-                        [ngClass]="{'is-valid':userForm.get('age').valid, 'is-invalid':userForm.get('age').invalid}"
+                        [ngClass]="{'is-valid':userForm.get('age').valid, 'is-invalid':userForm.get('age').invalid && userForm.get('age').touched}"
                         class="form-control" />
-                    <span *ngIf="userForm.get('age').errors?.required" class="invalid-feedback">Age is required</span>
-                    <span *ngIf="userForm.get('age').errors?.maxlength" class="invalid-feedback">Age must be within 3
+                    <span *ngIf="userForm.get('age').errors?.required && userForm.get('age').touched"
+                        class="invalid-feedback">Age is required</span>
+                    <span *ngIf="userForm.get('age').errors?.maxlength && userForm.get('age').touched"
+                        class="invalid-feedback">Age must be within 3
                         digits</span>
-                    <span *ngIf="userForm.get('age').errors?.isNumber" class="invalid-feedback">Invalid age</span>
+                    <span *ngIf="userForm.get('age').errors?.isNumber && userForm.get('age').touched"
+                        class="invalid-feedback">Invalid age</span>
                 </div>
                 <div class="form-group">
                     <label>Hobbies</label>
@@ -52,33 +61,33 @@
                     <div class="form-group">
                         <label>Street</label>
                         <input type="text" formControlName="street" class="form-control"
-                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.street.invalid}" />
-                        <span *ngIf="userForm.get('address').controls.street.errors?.required"
+                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.street.invalid && userForm.get('address').controls.street.touched}" />
+                        <span
+                            *ngIf="userForm.get('address').controls.street.errors?.required && userForm.get('address').controls.street.touched"
                             class="invalid-feedback">Street is
                             required</span>
                     </div>
                     <div class="form-group">
                         <label>City</label>
                         <input type="text" formControlName="city" class="form-control"
-                            [ngClass]="{'is-valid':userForm.get('address').controls.city.valid,'is-invalid':userForm.get('address').controls.city.invalid}" />
+                            [ngClass]="{'is-valid':userForm.get('address').controls.city.valid,'is-invalid':userForm.get('address').controls.city.invalid && userForm.get('address').controls.city.touched}" />
                         <span *ngIf="userForm.get('address').controls.city.errors?.required"
-                            class="invalid-feedback">City
-                            is
-                            required</span>
+                            class="invalid-feedback">City is required</span>
                     </div>
                     <div class="form-group">
                         <label>Pincode</label>
                         <input type="text" formControlName="pincode" class="form-control"
-                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.pincode.invalid}" />
-                        <span *ngIf="userForm.get('address').controls.pincode.errors?.required"
-                            class="invalid-feedback">Pincode is
-                            required</span>
+                            [ngClass]="{'is-valid':userForm.get('address').controls.street.valid,'is-invalid':userForm.get('address').controls.pincode.invalid && userForm.get('address').controls.pincode.touched}" />
+                        <span
+                            *ngIf="userForm.get('address').controls.pincode.errors?.required && userForm.get('address').controls.pincode.touched"
+                            class="invalid-feedback">Pincode is required</span>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label>Family Members</label>
-                    <select class="form-control" #total (change)="createMembers(total.value)">
+                    <select class="form-control" #total formControlName="totalMembers"
+                        (change)="createMembers(total.value)">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -114,8 +123,11 @@
             </div>
             <div class="w-100"></div>
             <div class="col">
-                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">Submit</button> &nbsp;&nbsp;
-                {{ userForm.status }}
+                <button type="submit" class="btn btn-primary" [disabled]="userForm.invalid">{{ btnText }}</button>
+                <br>
+                <div class="alert" [ngClass]="notifyClass" role="alert">
+                    {{ formMessage }}
+                </div>
             </div>
             <div class="col">
             </div>

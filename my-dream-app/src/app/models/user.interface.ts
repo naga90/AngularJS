@@ -1,4 +1,5 @@
 export interface User {
+    user_id?: string;
     fname: string;
     lname: string;
     address: {
@@ -7,7 +8,7 @@ export interface User {
         pincode: number
     };
     hobbies: string[];
-    familymembers: {
+    familymembers?: {
         mem_name: number,
         age: string
     }[]
